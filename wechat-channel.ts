@@ -194,7 +194,11 @@ async function doQRLogin(
   log("正在获取微信登录二维码...");
   const qrResp = await fetchQRCode(baseUrl);
 
-  log("\n请使用微信扫描以下二维码：\n");
+  // Always log the raw URL before attempting terminal rendering.
+  // Block-drawing characters from qrcode-terminal can render as garbled bytes
+  // in Claude Code's interface, piped output, or non-UTF-8 environments.
+  log(`\n扫码链接（可复制到浏览器或用"从相册选取"扫描）:\n${qrResp.qrcode_img_content}\n`);
+  log("请使用微信扫描以下二维码：\n");
   try {
     const qrterm = await import("qrcode-terminal");
     await new Promise<void>((resolve) => {
@@ -208,7 +212,7 @@ async function doQRLogin(
       );
     });
   } catch {
-    log(`二维码链接: ${qrResp.qrcode_img_content}`);
+    // qrcode-terminal unavailable — URL above is sufficient
   }
 
   log("等待扫码...");
